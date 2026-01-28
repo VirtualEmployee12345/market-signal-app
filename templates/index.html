@@ -3,132 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vee Signal | Market Intelligence</title>
+    <title>Vee Signal | Bloomberg Terminal</title>
+    <!-- Tailwind is loaded via CDN; if this fails, the UI will be broken -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'JetBrains+Mono', monospace;
-            letter-spacing: -0.02em;
+        /* Fallback background if Tailwind fails */
+        html, body {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            margin: 0;
+            padding: 0;
+            font-family: 'JetBrains+Mono', 'Courier New', monospace;
         }
         .panel {
             background: #000000;
-            border: 1px solid #222222;
+            border: 1px solid #333333;
+            margin-bottom: 10px;
         }
-        .glow-green { color: #00ff00; font-weight: 700; }
-        .glow-red { color: #ff0000; font-weight: 700; }
-        .glow-blue { color: #0066ff; font-weight: 700; }
-        .data-label { color: #555555; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; }
-        
-        /* Bloomberg Style Accents */
         .bb-orange { color: #ff8800; }
-        .bb-border-top { border-top: 2px solid #ffffff; }
-        .bb-header { background: #111111; border-bottom: 1px solid #333333; }
+        .data-label { color: #888888; font-size: 0.65rem; text-transform: uppercase; }
+        .buy { color: #00ff00 !important; }
+        .sell { color: #ff0000 !important; }
         
-        .ticker-wrap {
-            background: #111111;
-            border-bottom: 1px solid #222222;
-            overflow: hidden;
-            white-space: nowrap;
+        /* Ticker Animation */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-        
-        .ticker-item {
-            display: inline-block;
-            padding: 5px 20px;
-            font-size: 0.75rem;
+        .ticker-scroll {
+            display: flex;
+            width: fit-content;
+            animation: scroll 30s linear infinite;
         }
     </style>
 </head>
-<body class="relative">
-    <!-- Bloomberg Terminal Header -->
-    <div class="bb-header px-4 py-2 flex justify-between items-center text-[10px] font-bold">
-        <div class="flex space-x-4">
-            <span class="text-white">VEE SIGNAL</span>
-            <span class="text-[#ff8800]">MARKET MONITOR</span>
-            <span class="text-[#555555]">GOV: <span class="text-white">ON</span></span>
+<body>
+    <!-- Bloomberg Header -->
+    <div style="background: #111111; border-bottom: 1px solid #333333; padding: 5px 15px; display: flex; justify-content: space-between; font-size: 10px; font-weight: bold;">
+        <div>
+            <span style="color: #ffffff;">VEE_SIGNAL</span>
+            <span style="color: #ff8800; margin-left: 15px;">TERMINAL_MODE</span>
+            <span style="color: #555555; margin-left: 15px;">STATUS: <span style="color: #00ff00;">LIVE</span></span>
         </div>
-        <div class="flex space-x-4">
-            <span id="current-time"></span>
-            <span class="text-[#ff8800]">CONNECTED</span>
+        <div>
+            <span id="current-time" style="color: #ffffff;"></span>
         </div>
     </div>
 
     <!-- Ticker Tape -->
-    <div class="ticker-wrap px-4 py-1">
-        {% for result in results[:8] %}
-        <div class="ticker-item">
-            <span class="text-[#555555]">{{ result.symbol }}</span> 
-            <span class="{% if result.risk.recommendation == 'Buy' %}text-[#00ff00]{% else %}text-[#ff0000]{% endif %}">
-                {{ result.technical.current_price }}
-            </span>
-        </div>
-        {% endfor %}
-    </div>
-
-    <div class="p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
-        <!-- Signal Grid -->
-        <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div style="background: #0a0a0a; border-bottom: 1px solid #222222; overflow: hidden; white-space: nowrap; height: 30px; display: flex; align-items: center;">
+        <div class="ticker-scroll">
             {% for result in results %}
-            <div class="panel p-4 border-t-2 border-t-white">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h2 class="text-2xl font-bold leading-none">{{ result.symbol }}</h2>
-                        <p class="text-[10px] text-[#555555] uppercase mt-1">{{ result.technical.weekly_pattern or 'SCANNING...' }}</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-xl font-bold tracking-tighter">${{ result.technical.current_price }}</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-2 mb-4">
-                    <div class="bg-[#111111] p-3 border border-[#222222]">
-                        <p class="data-label">SIG</p>
-                        <p class="text-sm font-bold {% if result.risk.recommendation == 'Buy' %}text-[#00ff00]{% elif result.risk.recommendation == 'Sell' %}text-[#ff0000]{% else %}text-white{% endif %} uppercase">
-                            {{ result.risk.recommendation }}
-                        </p>
-                    </div>
-                    <div class="bg-[#111111] p-3 border border-[#222222]">
-                        <p class="data-label">RISK</p>
-                        <p class="text-sm font-bold text-white uppercase">{{ result.risk.risk_level }}</p>
-                    </div>
-                </div>
-
-                <div class="text-[10px] leading-relaxed border-t border-[#222222] pt-3">
-                    <div class="flex mb-1"><span class="w-12 text-[#555555] font-bold">TECH</span> <span class="text-zinc-300">{{ result.technical.summary }}</span></div>
-                    <div class="flex mb-1"><span class="w-12 text-[#555555] font-bold">FUND</span> <span class="text-zinc-300">{{ result.fundamental.summary }}</span></div>
-                    <div class="flex"><span class="w-12 text-[#555555] font-bold">SENT</span> <span class="text-zinc-300">{{ result.sentiment.summary }}</span></div>
-                </div>
+            <div style="display: inline-block; padding: 0 20px; font-size: 11px;">
+                <span style="color: #888888;">{{ result.symbol }}</span>
+                <span style="margin-left: 5px; color: {% if 'Buy' in result.risk.recommendation %}#00ff00{% else %}#ff0000{% endif %};">
+                    {{ result.technical.current_price }}
+                </span>
+            </div>
+            {% endfor %}
+            <!-- Duplicate for infinite scroll effect -->
+            {% for result in results %}
+            <div style="display: inline-block; padding: 0 20px; font-size: 11px;">
+                <span style="color: #888888;">{{ result.symbol }}</span>
+                <span style="margin-left: 5px; color: {% if 'Buy' in result.risk.recommendation %}#00ff00{% else %}#ff0000{% endif %};">
+                    {{ result.technical.current_price }}
+                </span>
             </div>
             {% endfor %}
         </div>
+    </div>
 
-        <!-- Sidebar / Command Center -->
-        <div class="space-y-4">
-            <div class="panel p-4 border-t-2 border-t-[#ff8800]">
-                <h3 class="text-[10px] font-bold text-[#ff8800] mb-4 uppercase">COMMAND_CENTER</h3>
-                <form action="/run-analysis" method="POST">
-                    <button type="submit" class="w-full bg-white text-black font-bold py-2 hover:bg-zinc-200 transition-colors text-[10px] uppercase">
-                        EXECUTE_RESCAN
-                    </button>
-                </form>
+    <div class="p-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <!-- Main Grid -->
+            <div class="md:col-span-3">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    {% if not results %}
+                    <div class="panel p-8 text-center border-dashed border-zinc-800">
+                        <p class="text-zinc-500 text-xs italic">NO_DATA_INGESTED. CLICK EXECUTE_RESCAN TO INITIALIZE.</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% for result in results %}
+                    <div class="panel p-4" style="border-top: 2px solid #ffffff;">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-2xl font-bold leading-none m-0 p-0">{{ result.symbol }}</h2>
+                                <p class="bb-orange text-[10px] mt-1 font-bold">{{ result.technical.weekly_pattern }}</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xl font-bold tracking-tighter">${{ result.technical.current_price }}</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 mb-4">
+                            <div style="background: #0a0a0a; padding: 10px; border: 1px solid #222222;">
+                                <div class="data-label">RECOMMENDATION</div>
+                                <div class="text-sm font-bold {% if 'Buy' in result.risk.recommendation %}buy{% elif 'Sell' in result.risk.recommendation %}sell{% endif %}">
+                                    {{ result.risk.recommendation }}
+                                </div>
+                            </div>
+                            <div style="background: #0a0a0a; padding: 10px; border: 1px solid #222222;">
+                                <div class="data-label">RISK_METRIC</div>
+                                <div class="text-sm font-bold">{{ result.risk.risk_level }}</div>
+                            </div>
+                        </div>
+
+                        <div style="font-size: 10px; line-height: 1.5; border-top: 1px solid #222222; padding-top: 10px;">
+                            <div style="display: flex; margin-bottom: 2px;">
+                                <span style="color: #555555; width: 45px; font-weight: bold;">TECH</span>
+                                <span style="color: #cccccc;">{{ result.technical.summary }}</span>
+                            </div>
+                            <div style="display: flex; margin-bottom: 2px;">
+                                <span style="color: #555555; width: 45px; font-weight: bold;">FUND</span>
+                                <span style="color: #cccccc;">{{ result.fundamental.summary }}</span>
+                            </div>
+                            <div style="display: flex;">
+                                <span style="color: #555555; width: 45px; font-weight: bold;">SENT</span>
+                                <span style="color: #cccccc;">{{ result.sentiment.summary }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
 
-            <div class="panel p-4">
-                <h3 class="text-[10px] font-bold text-[#555555] mb-3 uppercase">SYSTEM_STATE</h3>
-                <div class="space-y-2 text-[10px]">
-                    <div class="flex justify-between border-b border-[#111111] pb-1">
-                        <span class="text-[#555555]">AGENT_COUNT</span>
-                        <span class="text-white">04_ACTIVE</span>
+            <!-- Sidebar -->
+            <div class="space-y-4">
+                <div class="panel p-4" style="border-top: 2px solid #ff8800;">
+                    <div style="color: #ff8800; font-size: 10px; font-weight: bold; margin-bottom: 15px;">COMMAND_CENTER</div>
+                    <form action="/run-analysis" method="POST">
+                        <button type="submit" style="width: 100%; background: #ffffff; color: #000000; font-weight: bold; padding: 10px; border: none; font-size: 10px; cursor: pointer;">
+                            EXECUTE_RESCAN
+                        </button>
+                    </form>
+                    <div style="font-size: 9px; color: #444444; margin-top: 10px; line-height: 1.4;">
+                        SYSTEM_ARCH: VEE_MULTI_AGENT_v2.0<br>
+                        DATA_SOURCE: YFINANCE_MCP<br>
+                        CRON_STATUS: ACTIVE [09:00 EST]
                     </div>
-                    <div class="flex justify-between border-b border-[#111111] pb-1">
-                        <span class="text-[#555555]">MCP_SYNC</span>
-                        <span class="text-[#00ff00]">NOMINAL</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-[#555555]">DATA_FEED</span>
-                        <span class="text-[#ff8800]">LIVE</span>
+                </div>
+
+                <div class="panel p-4">
+                    <div style="color: #555555; font-size: 10px; font-weight: bold; margin-bottom: 10px;">MARKET_INDICATORS</div>
+                    <div style="font-size: 10px; color: #888888;">
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #111111; padding: 5px 0;">
+                            <span>VOLATILITY</span>
+                            <span style="color: #ffffff;">LOW</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #111111; padding: 5px 0;">
+                            <span>LIQUIDITY</span>
+                            <span style="color: #ffffff;">STABLE</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 5px 0;">
+                            <span>GLOBAL_TREND</span>
+                            <span style="color: #00ff00;">BULLISH</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,7 +169,8 @@
     <script>
         function updateTime() {
             const now = new Date();
-            document.getElementById('current-time').textContent = now.toISOString().replace('T', ' ').substr(0, 19);
+            const timeString = now.toISOString().replace('T', ' ').substr(0, 19);
+            document.getElementById('current-time').textContent = timeString + ' UTC';
         }
         setInterval(updateTime, 1000);
         updateTime();
