@@ -8,133 +8,127 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #0a0a0c;
-            color: #d1d1d1;
+            background-color: #000000;
+            color: #ffffff;
             font-family: 'JetBrains+Mono', monospace;
-            background-image: radial-gradient(circle at 2px 2px, #1a1a1e 1px, transparent 0);
-            background-size: 40px 40px;
+            letter-spacing: -0.02em;
         }
         .panel {
-            background: rgba(18, 18, 22, 0.8);
-            border: 1px solid #2d2d33;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            background: #000000;
+            border: 1px solid #222222;
         }
-        .glow-green { text-shadow: 0 0 10px #22c55e; color: #22c55e; }
-        .glow-red { text-shadow: 0 0 10px #ef4444; color: #ef4444; }
-        .glow-blue { text-shadow: 0 0 10px #3b82f6; color: #3b82f6; }
-        .data-label { color: #6e6e77; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .scanline {
-            width: 100%;
-            height: 100px;
-            z-index: 10;
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0) 100%);
-            opacity: 0.1;
-            position: absolute;
-            bottom: 100%;
-            animation: scanline 10s linear infinite;
+        .glow-green { color: #00ff00; font-weight: 700; }
+        .glow-red { color: #ff0000; font-weight: 700; }
+        .glow-blue { color: #0066ff; font-weight: 700; }
+        .data-label { color: #555555; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; }
+        
+        /* Bloomberg Style Accents */
+        .bb-orange { color: #ff8800; }
+        .bb-border-top { border-top: 2px solid #ffffff; }
+        .bb-header { background: #111111; border-bottom: 1px solid #333333; }
+        
+        .ticker-wrap {
+            background: #111111;
+            border-bottom: 1px solid #222222;
+            overflow: hidden;
+            white-space: nowrap;
         }
-        @keyframes scanline {
-            0% { bottom: 100%; }
-            100% { bottom: -100px; }
+        
+        .ticker-item {
+            display: inline-block;
+            padding: 5px 20px;
+            font-size: 0.75rem;
         }
     </style>
 </head>
-<body class="p-6 relative overflow-hidden">
-    <div class="scanline"></div>
-
-    <!-- Header -->
-    <div class="flex justify-between items-end mb-8 border-b border-zinc-800 pb-4">
-        <div>
-            <h1 class="text-2xl font-bold tracking-tighter text-zinc-100">VEE_SIGNAL//<span class="text-zinc-500">MARKET_INTEL</span></h1>
-            <p class="text-xs text-zinc-500">STATUS: OPERATIONAL | ARCH: MULTI-AGENT_v1.0</p>
+<body class="relative">
+    <!-- Bloomberg Terminal Header -->
+    <div class="bb-header px-4 py-2 flex justify-between items-center text-[10px] font-bold">
+        <div class="flex space-x-4">
+            <span class="text-white">VEE SIGNAL</span>
+            <span class="text-[#ff8800]">MARKET MONITOR</span>
+            <span class="text-[#555555]">GOV: <span class="text-white">ON</span></span>
         </div>
-        <div class="text-right">
-            <p class="text-xs data-label">System Time</p>
-            <p class="text-sm font-bold" id="current-time">LOADING...</p>
+        <div class="flex space-x-4">
+            <span id="current-time"></span>
+            <span class="text-[#ff8800]">CONNECTED</span>
         </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Main Signal Panel -->
-        <div class="md:col-span-2 space-y-6">
+    <!-- Ticker Tape -->
+    <div class="ticker-wrap px-4 py-1">
+        {% for result in results[:8] %}
+        <div class="ticker-item">
+            <span class="text-[#555555]">{{ result.symbol }}</span> 
+            <span class="{% if result.risk.recommendation == 'Buy' %}text-[#00ff00]{% else %}text-[#ff0000]{% endif %}">
+                {{ result.technical.current_price }}
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+        <!-- Signal Grid -->
+        <div class="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
             {% for result in results %}
-            <div class="panel p-6 rounded-none relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-2 text-[10px] text-zinc-700">SIG_ID: {{ result.timestamp }}</div>
-                
-                <div class="flex justify-between items-start mb-6">
+            <div class="panel p-4 border-t-2 border-t-white">
+                <div class="flex justify-between items-start mb-4">
                     <div>
-                        <h2 class="text-4xl font-bold tracking-tighter">{{ result.symbol }}</h2>
-                        <p class="text-zinc-500 uppercase text-xs">Primary Asset Analysis</p>
+                        <h2 class="text-2xl font-bold leading-none">{{ result.symbol }}</h2>
+                        <p class="text-[10px] text-[#555555] uppercase mt-1">{{ result.technical.weekly_pattern or 'SCANNING...' }}</p>
                     </div>
                     <div class="text-right">
-                        <p class="data-label">Current Price</p>
-                        <p class="text-3xl font-bold tracking-tight">${{ result.technical.current_price }}</p>
+                        <p class="text-xl font-bold tracking-tighter">${{ result.technical.current_price }}</p>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                    <div class="bg-zinc-900/50 p-4 border-l-2 {% if result.risk.recommendation == 'Buy' %}border-green-500{% elif result.risk.recommendation == 'Sell' %}border-red-500{% else %}border-blue-500{% endif %}">
-                        <p class="data-label text-zinc-400">Recommendation</p>
-                        <p class="text-2xl font-bold {% if result.risk.recommendation == 'Buy' %}glow-green{% elif result.risk.recommendation == 'Sell' %}glow-red{% else %}glow-blue{% endif %} uppercase tracking-widest">
+                <div class="grid grid-cols-2 gap-2 mb-4">
+                    <div class="bg-[#111111] p-3 border border-[#222222]">
+                        <p class="data-label">SIG</p>
+                        <p class="text-sm font-bold {% if result.risk.recommendation == 'Buy' %}text-[#00ff00]{% elif result.risk.recommendation == 'Sell' %}text-[#ff0000]{% else %}text-white{% endif %} uppercase">
                             {{ result.risk.recommendation }}
                         </p>
                     </div>
-                    <div class="bg-zinc-900/50 p-4 border-l-2 border-zinc-700">
-                        <p class="data-label text-zinc-400">Risk Level</p>
-                        <p class="text-2xl font-bold text-zinc-200 uppercase tracking-widest">{{ result.risk.risk_level }}</p>
+                    <div class="bg-[#111111] p-3 border border-[#222222]">
+                        <p class="data-label">RISK</p>
+                        <p class="text-sm font-bold text-white uppercase">{{ result.risk.risk_level }}</p>
                     </div>
                 </div>
 
-                <div class="space-y-4">
-                    <div class="border-t border-zinc-800 pt-4">
-                        <p class="data-label mb-2">Agent Feed</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                            <div class="bg-black/40 p-3 border border-zinc-800">
-                                <span class="text-zinc-500 font-bold">[TECH]</span> {{ result.technical.summary }}
-                            </div>
-                            <div class="bg-black/40 p-3 border border-zinc-800">
-                                <span class="text-zinc-500 font-bold">[FUND]</span> {{ result.fundamental.summary }}
-                            </div>
-                            <div class="bg-black/40 p-3 border border-zinc-800">
-                                <span class="text-zinc-500 font-bold">[SENT]</span> {{ result.sentiment.summary }}
-                            </div>
-                        </div>
-                    </div>
+                <div class="text-[10px] leading-relaxed border-t border-[#222222] pt-3">
+                    <div class="flex mb-1"><span class="w-12 text-[#555555] font-bold">TECH</span> <span class="text-zinc-300">{{ result.technical.summary }}</span></div>
+                    <div class="flex mb-1"><span class="w-12 text-[#555555] font-bold">FUND</span> <span class="text-zinc-300">{{ result.fundamental.summary }}</span></div>
+                    <div class="flex"><span class="w-12 text-[#555555] font-bold">SENT</span> <span class="text-zinc-300">{{ result.sentiment.summary }}</span></div>
                 </div>
             </div>
             {% endfor %}
         </div>
 
-        <!-- Sidebar / Secondary Data -->
-        <div class="space-y-6">
-            <div class="panel p-6 rounded-none">
-                <h3 class="text-sm font-bold border-b border-zinc-800 pb-2 mb-4 uppercase tracking-widest">Control_Center</h3>
+        <!-- Sidebar / Command Center -->
+        <div class="space-y-4">
+            <div class="panel p-4 border-t-2 border-t-[#ff8800]">
+                <h3 class="text-[10px] font-bold text-[#ff8800] mb-4 uppercase">COMMAND_CENTER</h3>
                 <form action="/run-analysis" method="POST">
-                    <button type="submit" class="w-full bg-zinc-100 text-black font-bold py-3 hover:bg-white transition-colors uppercase text-xs tracking-widest">
-                        Manual_Re-Scan
+                    <button type="submit" class="w-full bg-white text-black font-bold py-2 hover:bg-zinc-200 transition-colors text-[10px] uppercase">
+                        EXECUTE_RESCAN
                     </button>
                 </form>
-                <div class="mt-4 text-[10px] text-zinc-500 leading-relaxed">
-                    CRON_STATUS: ACTIVE<br>
-                    NEXT_SYNC: 09:00 EST<br>
-                    LOGS: STABLE
-                </div>
             </div>
 
-            <div class="panel p-6 rounded-none">
-                <h3 class="text-sm font-bold border-b border-zinc-800 pb-2 mb-4 uppercase tracking-widest">Market_Conditions</h3>
-                <div class="space-y-3 text-xs">
-                    <div class="flex justify-between">
-                        <span class="text-zinc-500">VOLATILITY</span>
-                        <span class="text-zinc-300">LOW</span>
+            <div class="panel p-4">
+                <h3 class="text-[10px] font-bold text-[#555555] mb-3 uppercase">SYSTEM_STATE</h3>
+                <div class="space-y-2 text-[10px]">
+                    <div class="flex justify-between border-b border-[#111111] pb-1">
+                        <span class="text-[#555555]">AGENT_COUNT</span>
+                        <span class="text-white">04_ACTIVE</span>
+                    </div>
+                    <div class="flex justify-between border-b border-[#111111] pb-1">
+                        <span class="text-[#555555]">MCP_SYNC</span>
+                        <span class="text-[#00ff00]">NOMINAL</span>
                     </div>
                     <div class="flex justify-between">
-                        <span class="text-zinc-500">LIQUIDITY</span>
-                        <span class="text-zinc-300">NOMINAL</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-zinc-500">TREND</span>
-                        <span class="text-green-500">BULLISH_INTACT</span>
+                        <span class="text-[#555555]">DATA_FEED</span>
+                        <span class="text-[#ff8800]">LIVE</span>
                     </div>
                 </div>
             </div>
