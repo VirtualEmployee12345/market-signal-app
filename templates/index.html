@@ -4,67 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vee Signal | Bloomberg Terminal</title>
-    <!-- Tailwind is loaded via CDN; if this fails, the UI will be broken -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Fallback background if Tailwind fails */
-        html, body {
+        * { box-sizing: border-box; }
+        body {
             background-color: #000000 !important;
             color: #ffffff !important;
             margin: 0;
             padding: 0;
             font-family: 'JetBrains+Mono', 'Courier New', monospace;
-        }
-        .panel {
-            background: #000000;
-            border: 1px solid #333333;
-            margin-bottom: 10px;
+            overflow-x: hidden;
         }
         .bb-orange { color: #ff8800; }
-        .data-label { color: #888888; font-size: 0.65rem; text-transform: uppercase; }
-        .buy { color: #00ff00 !important; }
-        .sell { color: #ff0000 !important; }
-        
-        /* Ticker Animation */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        .bb-header {
+            background: #111111;
+            border-bottom: 1px solid #333333;
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .ticker-bar {
+            background: #0a0a0a;
+            border-bottom: 1px solid #222222;
+            overflow: hidden;
+            white-space: nowrap;
+            height: 35px;
+            display: flex;
+            align-items: center;
         }
         .ticker-scroll {
             display: flex;
             width: fit-content;
-            animation: scroll 30s linear infinite;
+            animation: scroll 40s linear infinite;
         }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 0 25px;
+            font-size: 11px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 20px;
+        }
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: 3fr 1fr;
+            }
+        }
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        @media (min-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .panel {
+            background: #000000;
+            border: 1px solid #333333;
+            border-top: 2px solid #ffffff;
+            padding: 15px;
+        }
+        .sidebar-panel {
+            background: #000000;
+            border: 1px solid #333333;
+            border-top: 2px solid #ff8800;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .data-label { color: #888888; font-size: 10px; text-transform: uppercase; font-weight: bold; }
+        .buy { color: #00ff00 !important; }
+        .sell { color: #ff0000 !important; }
+        .rescan-btn {
+            width: 100%;
+            background: #ffffff;
+            color: #000000;
+            font-weight: bold;
+            padding: 12px;
+            border: none;
+            font-size: 11px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background 0.2s;
+        }
+        .rescan-btn:hover { background: #cccccc; }
+        .asset-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .asset-title { font-size: 24px; font-weight: bold; margin: 0; }
+        .metric-box {
+            background: #0a0a0a;
+            padding: 10px;
+            border: 1px solid #222222;
+        }
+        .telemetry-row {
+            display: flex;
+            font-size: 10px;
+            margin-bottom: 4px;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 4px;
+        }
+        .telemetry-label { color: #555555; width: 45px; font-weight: bold; flex-shrink: 0; }
+        .telemetry-val { color: #cccccc; }
     </style>
 </head>
 <body>
-    <!-- Bloomberg Header -->
-    <div style="background: #111111; border-bottom: 1px solid #333333; padding: 5px 15px; display: flex; justify-content: space-between; font-size: 10px; font-weight: bold;">
+    <div class="bb-header">
         <div>
-            <span style="color: #ffffff;">VEE_SIGNAL</span>
-            <span style="color: #ff8800; margin-left: 15px;">TERMINAL_MODE</span>
-            <span style="color: #555555; margin-left: 15px;">STATUS: <span style="color: #00ff00;">LIVE</span></span>
+            <span>VEE_SIGNAL_INTEL</span>
+            <span class="bb-orange" style="margin-left: 15px;">TERMINAL_ACTIVE</span>
+            <span style="color: #555555; margin-left: 15px;">NETWORK: <span style="color: #00ff00;">STABLE</span></span>
         </div>
         <div>
-            <span id="current-time" style="color: #ffffff;"></span>
+            <span id="current-time"></span>
         </div>
     </div>
 
-    <!-- Ticker Tape -->
-    <div style="background: #0a0a0a; border-bottom: 1px solid #222222; overflow: hidden; white-space: nowrap; height: 30px; display: flex; align-items: center;">
+    <div class="ticker-bar">
         <div class="ticker-scroll">
             {% for result in results %}
-            <div style="display: inline-block; padding: 0 20px; font-size: 11px;">
+            <div class="ticker-item">
                 <span style="color: #888888;">{{ result.symbol }}</span>
                 <span style="margin-left: 5px; color: {% if 'Buy' in result.risk.recommendation %}#00ff00{% else %}#ff0000{% endif %};">
                     {{ result.technical.current_price }}
                 </span>
             </div>
             {% endfor %}
-            <!-- Duplicate for infinite scroll effect -->
+            <!-- Duplicate for infinite scroll -->
             {% for result in results %}
-            <div style="display: inline-block; padding: 0 20px; font-size: 11px;">
+            <div class="ticker-item">
                 <span style="color: #888888;">{{ result.symbol }}</span>
                 <span style="margin-left: 5px; color: {% if 'Buy' in result.risk.recommendation %}#00ff00{% else %}#ff0000{% endif %};">
                     {{ result.technical.current_price }}
@@ -74,92 +153,84 @@
         </div>
     </div>
 
-    <div class="p-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <!-- Main Grid -->
-            <div class="md:col-span-3">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    {% if not results %}
-                    <div class="panel p-8 text-center border-dashed border-zinc-800">
-                        <p class="text-zinc-500 text-xs italic">NO_DATA_INGESTED. CLICK EXECUTE_RESCAN TO INITIALIZE.</p>
+    <div class="grid-container">
+        <div class="main-grid">
+            {% if not results %}
+            <div class="panel" style="grid-column: 1 / -1; text-align: center; padding: 60px; border-style: dashed;">
+                <p style="color: #555555; font-size: 12px; margin: 0;">NO_DATA_INGESTED</p>
+                <p style="color: #444444; font-size: 10px; margin-top: 10px;">CLICK EXECUTE_RESCAN TO INITIALIZE ANALYTICS</p>
+            </div>
+            {% endif %}
+            
+            {% for result in results %}
+            <div class="panel">
+                <div class="asset-header">
+                    <div>
+                        <h2 class="asset-title">{{ result.symbol }}</h2>
+                        <div class="bb-orange" style="font-size: 10px; font-weight: bold; margin-top: 4px;">{{ result.technical.weekly_pattern }}</div>
                     </div>
-                    {% endif %}
-                    
-                    {% for result in results %}
-                    <div class="panel p-4" style="border-top: 2px solid #ffffff;">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h2 class="text-2xl font-bold leading-none m-0 p-0">{{ result.symbol }}</h2>
-                                <p class="bb-orange text-[10px] mt-1 font-bold">{{ result.technical.weekly_pattern }}</p>
-                            </div>
-                            <div class="text-right">
-                                <p class="text-xl font-bold tracking-tighter">${{ result.technical.current_price }}</p>
-                            </div>
-                        </div>
+                    <div style="text-align: right;">
+                        <div class="asset-title" style="font-size: 20px;">${{ result.technical.current_price }}</div>
+                    </div>
+                </div>
 
-                        <div class="grid grid-cols-2 gap-2 mb-4">
-                            <div style="background: #0a0a0a; padding: 10px; border: 1px solid #222222;">
-                                <div class="data-label">RECOMMENDATION</div>
-                                <div class="text-sm font-bold {% if 'Buy' in result.risk.recommendation %}buy{% elif 'Sell' in result.risk.recommendation %}sell{% endif %}">
-                                    {{ result.risk.recommendation }}
-                                </div>
-                            </div>
-                            <div style="background: #0a0a0a; padding: 10px; border: 1px solid #222222;">
-                                <div class="data-label">RISK_METRIC</div>
-                                <div class="text-sm font-bold">{{ result.risk.risk_level }}</div>
-                            </div>
-                        </div>
-
-                        <div style="font-size: 10px; line-height: 1.5; border-top: 1px solid #222222; padding-top: 10px;">
-                            <div style="display: flex; margin-bottom: 2px;">
-                                <span style="color: #555555; width: 45px; font-weight: bold;">TECH</span>
-                                <span style="color: #cccccc;">{{ result.technical.summary }}</span>
-                            </div>
-                            <div style="display: flex; margin-bottom: 2px;">
-                                <span style="color: #555555; width: 45px; font-weight: bold;">FUND</span>
-                                <span style="color: #cccccc;">{{ result.fundamental.summary }}</span>
-                            </div>
-                            <div style="display: flex;">
-                                <span style="color: #555555; width: 45px; font-weight: bold;">SENT</span>
-                                <span style="color: #cccccc;">{{ result.sentiment.summary }}</span>
-                            </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+                    <div class="metric-box">
+                        <div class="data-label">RECOMMENDATION</div>
+                        <div style="font-size: 14px; font-weight: bold;" class="{% if 'Buy' in result.risk.recommendation %}buy{% elif 'Sell' in result.risk.recommendation %}sell{% endif %}">
+                            {{ result.risk.recommendation }}
                         </div>
                     </div>
-                    {% endfor %}
+                    <div class="metric-box">
+                        <div class="data-label">RISK_LEVEL</div>
+                        <div style="font-size: 14px; font-weight: bold;">{{ result.risk.risk_level }}</div>
+                    </div>
+                </div>
+
+                <div class="telemetry-row">
+                    <span class="telemetry-label">TECH</span>
+                    <span class="telemetry-val">{{ result.technical.summary }}</span>
+                </div>
+                <div class="telemetry-row">
+                    <span class="telemetry-label">FUND</span>
+                    <span class="telemetry-val">{{ result.fundamental.summary }}</span>
+                </div>
+                <div class="telemetry-row">
+                    <span class="telemetry-label">SENT</span>
+                    <span class="telemetry-val">{{ result.sentiment.summary }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-panel">
+                <div class="bb-orange" style="font-size: 11px; font-weight: bold; margin-bottom: 15px;">COMMAND_CENTER</div>
+                <form action="/run-analysis" method="POST">
+                    <button type="submit" class="rescan-btn">EXECUTE_RESCAN</button>
+                </form>
+                <div style="font-size: 9px; color: #555555; margin-top: 15px; line-height: 1.6;">
+                    SYS_NAME: VEE_MULTI_AGENT<br>
+                    VERSION: 2.0.4-FIX<br>
+                    TIMEZONE: EST/UTC<br>
+                    PROVIDER: YFINANCE/EXA
                 </div>
             </div>
 
-            <!-- Sidebar -->
-            <div class="space-y-4">
-                <div class="panel p-4" style="border-top: 2px solid #ff8800;">
-                    <div style="color: #ff8800; font-size: 10px; font-weight: bold; margin-bottom: 15px;">COMMAND_CENTER</div>
-                    <form action="/run-analysis" method="POST">
-                        <button type="submit" style="width: 100%; background: #ffffff; color: #000000; font-weight: bold; padding: 10px; border: none; font-size: 10px; cursor: pointer;">
-                            EXECUTE_RESCAN
-                        </button>
-                    </form>
-                    <div style="font-size: 9px; color: #444444; margin-top: 10px; line-height: 1.4;">
-                        SYSTEM_ARCH: VEE_MULTI_AGENT_v2.0<br>
-                        DATA_SOURCE: YFINANCE_MCP<br>
-                        CRON_STATUS: ACTIVE [09:00 EST]
+            <div class="sidebar-panel" style="border-top-color: #555555;">
+                <div style="color: #888888; font-size: 11px; font-weight: bold; margin-bottom: 15px;">SYSTEM_TELEMETRY</div>
+                <div style="font-size: 11px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #555555;">UPTIME</span>
+                        <span style="color: #ffffff;">99.98%</span>
                     </div>
-                </div>
-
-                <div class="panel p-4">
-                    <div style="color: #555555; font-size: 10px; font-weight: bold; margin-bottom: 10px;">MARKET_INDICATORS</div>
-                    <div style="font-size: 10px; color: #888888;">
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #111111; padding: 5px 0;">
-                            <span>VOLATILITY</span>
-                            <span style="color: #ffffff;">LOW</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #111111; padding: 5px 0;">
-                            <span>LIQUIDITY</span>
-                            <span style="color: #ffffff;">STABLE</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; padding: 5px 0;">
-                            <span>GLOBAL_TREND</span>
-                            <span style="color: #00ff00;">BULLISH</span>
-                        </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #555555;">MCP_HUB</span>
+                        <span style="color: #00ff00;">CONNECTED</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="color: #555555;">LATENCY</span>
+                        <span style="color: #ff8800;">14ms</span>
                     </div>
                 </div>
             </div>
