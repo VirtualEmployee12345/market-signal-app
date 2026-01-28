@@ -7,7 +7,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Mock database for analysis results
-RESULTS_FILE = 'analysis_results.json'
+RESULTS_FILE = os.path.join(os.path.dirname(__file__), 'analysis_results.json')
 
 def load_results():
     if os.path.exists(RESULTS_FILE):
@@ -23,7 +23,9 @@ def index():
 def run_analysis():
     # This triggers the /analyze skill logic
     try:
-        subprocess.Popen(['python3', 'skills/analyze.py'])
+        # Use absolute path relative to the app.py location
+        script_path = os.path.join(os.path.dirname(__file__), 'skills/analyze.py')
+        subprocess.Popen(['python3', script_path])
         return jsonify({"status": "Analysis triggered", "time": datetime.now().isoformat()}), 202
     except Exception as e:
         return jsonify({"error": str(e)}), 500

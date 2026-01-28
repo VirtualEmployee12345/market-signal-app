@@ -9,7 +9,7 @@ from agents.fundamental_agent import FundamentalAgent
 from agents.sentiment_agent import SentimentAgent
 from agents.risk_agent import RiskAgent
 
-RESULTS_FILE = 'analysis_results.json'
+RESULTS_FILE = os.path.join(os.path.dirname(__file__), '../analysis_results.json')
 
 def run_orchestration(symbols=["SPY", "ES=F", "NQ=F", "CL=F", "GC=F", "BTC-USD", "ETH-USD", "SOL-USD", "TSLA", "PLTR", "NVDA", "GOOGL", "AAPL", "MSFT", "AMZN", "META", "BRK-B", "LLY", "AVGO", "V", "NVO", "JPM", "TSM", "WMT", "UNH", "MA", "PG", "ASML", "ORCL", "COST", "HD", "TM"]):
     print(f"Starting analysis for {len(symbols)} symbols...")
