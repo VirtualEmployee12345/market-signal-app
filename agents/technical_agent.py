@@ -6,26 +6,44 @@ class TechnicalAgent:
         self.symbol = symbol
 
     def _detect_candlesticks(self, df):
-        """Simple candlestick pattern detection logic for Weekly timeframe"""
-        if len(df) < 2: return "No Pattern"
+        """Advanced candlestick pattern detection logic for Weekly timeframe"""
+        if len(df) < 3: return "Scanning..."
         
-        last_week = df.iloc[-1]
-        prev_week = df.iloc[-2]
+        curr = df.iloc[-1]
+        prev = df.iloc[-2]
+        prev2 = df.iloc[-3]
         
-        # Bullish Engulfing
-        if (last_week['Close'] > last_week['Open'] and 
-            prev_week['Close'] < prev_week['Open'] and
-            last_week['Close'] > prev_week['Open'] and
-            last_week['Open'] < prev_week['Close']):
-            return "Bullish Engulfing"
+        # Calculations
+        body = abs(curr['Close'] - curr['Open'])
+        prev_body = abs(prev['Close'] - prev['Open'])
+        range_val = curr['High'] - curr['Low']
+        
+        # 1. Bullish Engulfing
+        if (curr['Close'] > curr['Open'] and prev['Close'] < prev['Open'] and 
+            curr['Close'] > prev['Open'] and curr['Open'] < prev['Close']):
+            return "🔥 Bullish Engulfing"
             
-        # Hammer
-        body = abs(last_week['Close'] - last_week['Open'])
-        lower_shadow = last_week['Open'] - last_week['Low'] if last_week['Close'] > last_week['Open'] else last_week['Close'] - last_week['Low']
-        if lower_shadow > (2 * body) and (last_week['High'] - max(last_week['Open'], last_week['Close'])) < body:
-            return "Hammer"
+        # 2. Bearish Engulfing
+        if (curr['Close'] < curr['Open'] and prev['Close'] > prev['Open'] and 
+            curr['Close'] < prev['Open'] and curr['Open'] > prev['Close']):
+            return "💀 Bearish Engulfing"
+            
+        # 3. Hammer (Bottoming signal)
+        lower_shadow = min(curr['Open'], curr['Close']) - curr['Low']
+        if lower_shadow > (2 * body) and (curr['High'] - max(curr['Open'], curr['Close'])) < (0.1 * body):
+            return "🔨 Bullish Hammer"
+            
+        # 4. Shooting Star (Topping signal)
+        upper_shadow = curr['High'] - max(curr['Open'], curr['Close'])
+        if upper_shadow > (2 * body) and (min(curr['Open'], curr['Close']) - curr['Low']) < (0.1 * body):
+            return "☄️ Shooting Star"
 
-        return "Neutral / No Clear Pattern"
+        # 5. Morning Star
+        if (prev2['Close'] < prev2['Open'] and body > 0 and 
+            curr['Close'] > curr['Open'] and curr['Close'] > (prev2['Open'] + prev2['Close'])/2):
+            return "🌅 Morning Star"
+
+        return "Neutral / Consolidation"
 
     def analyze(self) -> Dict[str, Any]:
         ticker = yf.Ticker(self.symbol)

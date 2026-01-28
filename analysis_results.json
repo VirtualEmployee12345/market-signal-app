@@ -1,5 +1,1205 @@
 [
     {
+        "timestamp": "2026-01-27T23:43:46.856349",
+        "symbol": "TM",
+        "technical": {
+            "symbol": "TM",
+            "current_price": 224.12,
+            "ma_20": 222.04,
+            "ma_50": 211.48,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "TM",
+            "pe_ratio": 14.202788,
+            "market_cap": 293482921984,
+            "summary": "P/E Ratio: 14.202788. Market Cap: 293482921984."
+        },
+        "sentiment": {
+            "symbol": "TM",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "TM",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:46.470567",
+        "symbol": "HD",
+        "technical": {
+            "symbol": "HD",
+            "current_price": 380.36,
+            "ma_20": 367.09,
+            "ma_50": 356.78,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "HD",
+            "pe_ratio": 25.282192,
+            "market_cap": 378652721152,
+            "summary": "P/E Ratio: 25.282192. Market Cap: 378652721152."
+        },
+        "sentiment": {
+            "symbol": "HD",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "HD",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:45.970853",
+        "symbol": "COST",
+        "technical": {
+            "symbol": "COST",
+            "current_price": 970.28,
+            "ma_20": 927.44,
+            "ma_50": 904.05,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "COST",
+            "pe_ratio": 43.680866,
+            "market_cap": 430763278336,
+            "summary": "P/E Ratio: 43.680866. Market Cap: 430763278336."
+        },
+        "sentiment": {
+            "symbol": "COST",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "COST",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:45.607089",
+        "symbol": "ORCL",
+        "technical": {
+            "symbol": "ORCL",
+            "current_price": 174.9,
+            "ma_20": 189.72,
+            "ma_50": 198.14,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "ORCL",
+            "pe_ratio": 22.045422,
+            "market_cap": 502510419968,
+            "summary": "P/E Ratio: 22.045422. Market Cap: 502510419968."
+        },
+        "sentiment": {
+            "symbol": "ORCL",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "ORCL",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:45.233825",
+        "symbol": "ASML",
+        "technical": {
+            "symbol": "ASML",
+            "current_price": 1454.59,
+            "ma_20": 1269.11,
+            "ma_50": 1142.84,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "ASML",
+            "pe_ratio": 44.699352,
+            "market_cap": 564595720192,
+            "summary": "P/E Ratio: 44.699352. Market Cap: 564595720192."
+        },
+        "sentiment": {
+            "symbol": "ASML",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "ASML",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:44.865134",
+        "symbol": "PG",
+        "technical": {
+            "symbol": "PG",
+            "current_price": 148.34,
+            "ma_20": 143.62,
+            "ma_50": 144.03,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "PG",
+            "pe_ratio": 20.267242,
+            "market_cap": 347187576832,
+            "summary": "P/E Ratio: 20.267242. Market Cap: 347187576832."
+        },
+        "sentiment": {
+            "symbol": "PG",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "PG",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:44.235862",
+        "symbol": "MA",
+        "technical": {
+            "symbol": "MA",
+            "current_price": 520.41,
+            "ma_20": 553.59,
+            "ma_50": 552.5,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "MA",
+            "pe_ratio": 27.212572,
+            "market_cap": 470456762368,
+            "summary": "P/E Ratio: 27.212572. Market Cap: 470456762368."
+        },
+        "sentiment": {
+            "symbol": "MA",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "MA",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:43.859509",
+        "symbol": "UNH",
+        "technical": {
+            "symbol": "UNH",
+            "current_price": 282.7,
+            "ma_20": 338.09,
+            "ma_50": 330.78,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "UNH",
+            "pe_ratio": 13.60382,
+            "market_cap": 256080576512,
+            "summary": "P/E Ratio: 13.60382. Market Cap: 256080576512."
+        },
+        "sentiment": {
+            "symbol": "UNH",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "UNH",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:43.424946",
+        "symbol": "WMT",
+        "technical": {
+            "symbol": "WMT",
+            "current_price": 116.94,
+            "ma_20": 116.07,
+            "ma_50": 112.73,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "WMT",
+            "pe_ratio": 39.36817,
+            "market_cap": 932345217024,
+            "summary": "P/E Ratio: 39.36817. Market Cap: 932345217024."
+        },
+        "sentiment": {
+            "symbol": "WMT",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "WMT",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:42.974119",
+        "symbol": "TSM",
+        "technical": {
+            "symbol": "TSM",
+            "current_price": 338.34,
+            "ma_20": 324.73,
+            "ma_50": 303.7,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "TSM",
+            "pe_ratio": 18.798452,
+            "market_cap": 1754802028544,
+            "summary": "P/E Ratio: 18.798452. Market Cap: 1754802028544."
+        },
+        "sentiment": {
+            "symbol": "TSM",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "TSM",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:42.618699",
+        "symbol": "JPM",
+        "technical": {
+            "symbol": "JPM",
+            "current_price": 300.31,
+            "ma_20": 315.73,
+            "ma_50": 312.31,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "JPM",
+            "pe_ratio": 13.012239,
+            "market_cap": 817522606080,
+            "summary": "P/E Ratio: 13.012239. Market Cap: 817522606080."
+        },
+        "sentiment": {
+            "symbol": "JPM",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "JPM",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:42.195328",
+        "symbol": "NVO",
+        "technical": {
+            "symbol": "NVO",
+            "current_price": 62.89,
+            "ma_20": 57.96,
+            "ma_50": 52.33,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "NVO",
+            "pe_ratio": 17.955954,
+            "market_cap": 279450419200,
+            "summary": "P/E Ratio: 17.955954. Market Cap: 279450419200."
+        },
+        "sentiment": {
+            "symbol": "NVO",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "NVO",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:41.767060",
+        "symbol": "V",
+        "technical": {
+            "symbol": "V",
+            "current_price": 325.26,
+            "ma_20": 339.42,
+            "ma_50": 337.54,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "V",
+            "pe_ratio": 22.507132,
+            "market_cap": 627718356992,
+            "summary": "P/E Ratio: 22.507132. Market Cap: 627718356992."
+        },
+        "sentiment": {
+            "symbol": "V",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "V",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:41.405911",
+        "symbol": "AVGO",
+        "technical": {
+            "symbol": "AVGO",
+            "current_price": 332.79,
+            "ma_20": 340.36,
+            "ma_50": 354.72,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "AVGO",
+            "pe_ratio": 23.402363,
+            "market_cap": 1577848537088,
+            "summary": "P/E Ratio: 23.402363. Market Cap: 1577848537088."
+        },
+        "sentiment": {
+            "symbol": "AVGO",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "AVGO",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:41.077974",
+        "symbol": "LLY",
+        "technical": {
+            "symbol": "LLY",
+            "current_price": 1039.51,
+            "ma_20": 1067.63,
+            "ma_50": 1054.51,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "LLY",
+            "pe_ratio": 31.314428,
+            "market_cap": 931875782656,
+            "summary": "P/E Ratio: 31.314428. Market Cap: 931875782656."
+        },
+        "sentiment": {
+            "symbol": "LLY",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "LLY",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:40.526499",
+        "symbol": "BRK-B",
+        "technical": {
+            "symbol": "BRK-B",
+            "current_price": 474.67,
+            "ma_20": 493.03,
+            "ma_50": 498.95,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "BRK-B",
+            "pe_ratio": 19.621916,
+            "market_cap": 1024022151168,
+            "summary": "P/E Ratio: 19.621916. Market Cap: 1024022151168."
+        },
+        "sentiment": {
+            "symbol": "BRK-B",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "BRK-B",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:40.243317",
+        "symbol": "META",
+        "technical": {
+            "symbol": "META",
+            "current_price": 672.97,
+            "ma_20": 645.04,
+            "ma_50": 641.63,
+            "signal": "Bullish",
+            "weekly_pattern": "\ud83c\udf05 Morning Star",
+            "summary": "Trend is Bullish. Weekly Pattern: \ud83c\udf05 Morning Star."
+        },
+        "fundamental": {
+            "symbol": "META",
+            "pe_ratio": 22.617321,
+            "market_cap": 1696239452160,
+            "summary": "P/E Ratio: 22.617321. Market Cap: 1696239452160."
+        },
+        "sentiment": {
+            "symbol": "META",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "META",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:39.944197",
+        "symbol": "AMZN",
+        "technical": {
+            "symbol": "AMZN",
+            "current_price": 244.68,
+            "ma_20": 237.65,
+            "ma_50": 232.16,
+            "signal": "Bullish",
+            "weekly_pattern": "\ud83c\udf05 Morning Star",
+            "summary": "Trend is Bullish. Weekly Pattern: \ud83c\udf05 Morning Star."
+        },
+        "fundamental": {
+            "symbol": "AMZN",
+            "pe_ratio": 31.089266,
+            "market_cap": 2615682007040,
+            "summary": "P/E Ratio: 31.089266. Market Cap: 2615682007040."
+        },
+        "sentiment": {
+            "symbol": "AMZN",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "AMZN",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:39.637358",
+        "symbol": "MSFT",
+        "technical": {
+            "symbol": "MSFT",
+            "current_price": 480.58,
+            "ma_20": 470.68,
+            "ma_50": 479.53,
+            "signal": "Bullish",
+            "weekly_pattern": "\ud83c\udf05 Morning Star",
+            "summary": "Trend is Bullish. Weekly Pattern: \ud83c\udf05 Morning Star."
+        },
+        "fundamental": {
+            "symbol": "MSFT",
+            "pe_ratio": 25.57516,
+            "market_cap": 3572231045120,
+            "summary": "P/E Ratio: 25.57516. Market Cap: 3572231045120."
+        },
+        "sentiment": {
+            "symbol": "MSFT",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "MSFT",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:39.232637",
+        "symbol": "AAPL",
+        "technical": {
+            "symbol": "AAPL",
+            "current_price": 258.27,
+            "ma_20": 259.87,
+            "ma_50": 269.07,
+            "signal": "Bearish",
+            "weekly_pattern": "\ud83c\udf05 Morning Star",
+            "summary": "Trend is Bearish. Weekly Pattern: \ud83c\udf05 Morning Star."
+        },
+        "fundamental": {
+            "symbol": "AAPL",
+            "pe_ratio": 28.24064,
+            "market_cap": 3816288419840,
+            "summary": "P/E Ratio: 28.24064. Market Cap: 3816288419840."
+        },
+        "sentiment": {
+            "symbol": "AAPL",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "AAPL",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:38.825221",
+        "symbol": "GOOGL",
+        "technical": {
+            "symbol": "GOOGL",
+            "current_price": 334.55,
+            "ma_20": 325.28,
+            "ma_50": 314.51,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "GOOGL",
+            "pe_ratio": 29.741055,
+            "market_cap": 4052110278656,
+            "summary": "P/E Ratio: 29.741055. Market Cap: 4052110278656."
+        },
+        "sentiment": {
+            "symbol": "GOOGL",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "GOOGL",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:38.517679",
+        "symbol": "NVDA",
+        "technical": {
+            "symbol": "NVDA",
+            "current_price": 188.52,
+            "ma_20": 186.08,
+            "ma_50": 183.58,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "NVDA",
+            "pe_ratio": 24.598572,
+            "market_cap": 4589896597504,
+            "summary": "P/E Ratio: 24.598572. Market Cap: 4589896597504."
+        },
+        "sentiment": {
+            "symbol": "NVDA",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "NVDA",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:38.175268",
+        "symbol": "PLTR",
+        "technical": {
+            "symbol": "PLTR",
+            "current_price": 165.7,
+            "ma_20": 174.39,
+            "ma_50": 176.06,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "PLTR",
+            "pe_ratio": 163.69958,
+            "market_cap": 394935369728,
+            "summary": "P/E Ratio: 163.69958. Market Cap: 394935369728."
+        },
+        "sentiment": {
+            "symbol": "PLTR",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "PLTR",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:37.876644",
+        "symbol": "TSLA",
+        "technical": {
+            "symbol": "TSLA",
+            "current_price": 430.9,
+            "ma_20": 441.27,
+            "ma_50": 442.31,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "TSLA",
+            "pe_ratio": 198.30733,
+            "market_cap": 1433095503872,
+            "summary": "P/E Ratio: 198.30733. Market Cap: 1433095503872."
+        },
+        "sentiment": {
+            "symbol": "TSLA",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "TSLA",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:37.583496",
+        "symbol": "SOL-USD",
+        "technical": {
+            "symbol": "SOL-USD",
+            "current_price": 126.71,
+            "ma_20": 134.51,
+            "ma_50": 131.04,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "SOL-USD",
+            "pe_ratio": "N/A",
+            "market_cap": 71727276032,
+            "summary": "P/E Ratio: N/A. Market Cap: 71727276032."
+        },
+        "sentiment": {
+            "symbol": "SOL-USD",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "SOL-USD",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:37.282218",
+        "symbol": "ETH-USD",
+        "technical": {
+            "symbol": "ETH-USD",
+            "current_price": 2998.3,
+            "ma_20": 3102.69,
+            "ma_50": 3066.74,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "ETH-USD",
+            "pe_ratio": "N/A",
+            "market_cap": 361877536768,
+            "summary": "P/E Ratio: N/A. Market Cap: 361877536768."
+        },
+        "sentiment": {
+            "symbol": "ETH-USD",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "ETH-USD",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:37.014963",
+        "symbol": "BTC-USD",
+        "technical": {
+            "symbol": "BTC-USD",
+            "current_price": 88974.02,
+            "ma_20": 91407.05,
+            "ma_50": 90028.57,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "BTC-USD",
+            "pe_ratio": "N/A",
+            "market_cap": 1777823514624,
+            "summary": "P/E Ratio: N/A. Market Cap: 1777823514624."
+        },
+        "sentiment": {
+            "symbol": "BTC-USD",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "BTC-USD",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:36.710437",
+        "symbol": "GC=F",
+        "technical": {
+            "symbol": "GC=F",
+            "current_price": 5234.0,
+            "ma_20": 4622.91,
+            "ma_50": 4390.21,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "GC=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "GC=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "GC=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:36.458844",
+        "symbol": "CL=F",
+        "technical": {
+            "symbol": "CL=F",
+            "current_price": 62.78,
+            "ma_20": 59.26,
+            "ma_50": 58.7,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "CL=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "CL=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "CL=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:36.168918",
+        "symbol": "NQ=F",
+        "technical": {
+            "symbol": "NQ=F",
+            "current_price": 26225.25,
+            "ma_20": 25704.01,
+            "ma_50": 25442.58,
+            "signal": "Bullish",
+            "weekly_pattern": "\ud83c\udf05 Morning Star",
+            "summary": "Trend is Bullish. Weekly Pattern: \ud83c\udf05 Morning Star."
+        },
+        "fundamental": {
+            "symbol": "NQ=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "NQ=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "NQ=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:35.883973",
+        "symbol": "ES=F",
+        "technical": {
+            "symbol": "ES=F",
+            "current_price": 7027.25,
+            "ma_20": 6956.79,
+            "ma_50": 6867.97,
+            "signal": "Bullish",
+            "weekly_pattern": "\ud83c\udf05 Morning Star",
+            "summary": "Trend is Bullish. Weekly Pattern: \ud83c\udf05 Morning Star."
+        },
+        "fundamental": {
+            "symbol": "ES=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "ES=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "ES=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:43:35.607099",
+        "symbol": "SPY",
+        "technical": {
+            "symbol": "SPY",
+            "current_price": 695.49,
+            "ma_20": 689.26,
+            "ma_50": 681.37,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / Consolidation",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / Consolidation."
+        },
+        "fundamental": {
+            "symbol": "SPY",
+            "pe_ratio": "N/A",
+            "market_cap": 638308188160,
+            "summary": "P/E Ratio: N/A. Market Cap: 638308188160."
+        },
+        "sentiment": {
+            "symbol": "SPY",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "SPY",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy. Priority given to Weekly Patterns."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:40:20.225465",
+        "symbol": "SI=F",
+        "technical": {
+            "symbol": "SI=F",
+            "current_price": 115.28,
+            "ma_20": 86.52,
+            "ma_50": 69.98,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / No Clear Pattern",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / No Clear Pattern."
+        },
+        "fundamental": {
+            "symbol": "SI=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "SI=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "SI=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy based on technical trend."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:40:19.924055",
+        "symbol": "GC=F",
+        "technical": {
+            "symbol": "GC=F",
+            "current_price": 5233.7,
+            "ma_20": 4622.89,
+            "ma_50": 4390.2,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / No Clear Pattern",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / No Clear Pattern."
+        },
+        "fundamental": {
+            "symbol": "GC=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "GC=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "GC=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy based on technical trend."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:40:19.647174",
+        "symbol": "CL=F",
+        "technical": {
+            "symbol": "CL=F",
+            "current_price": 62.8,
+            "ma_20": 59.26,
+            "ma_50": 58.7,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / No Clear Pattern",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / No Clear Pattern."
+        },
+        "fundamental": {
+            "symbol": "CL=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "CL=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "CL=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy based on technical trend."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:40:19.324760",
+        "symbol": "RTY=F",
+        "technical": {
+            "symbol": "RTY=F",
+            "current_price": 2683.2,
+            "ma_20": 2627.75,
+            "ma_50": 2541.57,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / No Clear Pattern",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / No Clear Pattern."
+        },
+        "fundamental": {
+            "symbol": "RTY=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "RTY=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "RTY=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy based on technical trend."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:40:19.051342",
+        "symbol": "YM=F",
+        "technical": {
+            "symbol": "YM=F",
+            "current_price": 49133.0,
+            "ma_20": 49248.4,
+            "ma_50": 48308.56,
+            "signal": "Bearish",
+            "weekly_pattern": "Neutral / No Clear Pattern",
+            "summary": "Trend is Bearish. Weekly Pattern: Neutral / No Clear Pattern."
+        },
+        "fundamental": {
+            "symbol": "YM=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "YM=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "YM=F",
+            "recommendation": "Sell",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Sell based on technical trend."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:40:18.776691",
+        "symbol": "NQ=F",
+        "technical": {
+            "symbol": "NQ=F",
+            "current_price": 26226.0,
+            "ma_20": 25704.05,
+            "ma_50": 25442.6,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / No Clear Pattern",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / No Clear Pattern."
+        },
+        "fundamental": {
+            "symbol": "NQ=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "NQ=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "NQ=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy based on technical trend."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:40:18.497180",
+        "symbol": "ES=F",
+        "technical": {
+            "symbol": "ES=F",
+            "current_price": 7027.5,
+            "ma_20": 6956.8,
+            "ma_50": 6867.97,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / No Clear Pattern",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / No Clear Pattern."
+        },
+        "fundamental": {
+            "symbol": "ES=F",
+            "pe_ratio": "N/A",
+            "market_cap": "N/A",
+            "summary": "P/E Ratio: N/A. Market Cap: N/A."
+        },
+        "sentiment": {
+            "symbol": "ES=F",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "ES=F",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy based on technical trend."
+        }
+    },
+    {
+        "timestamp": "2026-01-27T23:40:18.207225",
+        "symbol": "SPY",
+        "technical": {
+            "symbol": "SPY",
+            "current_price": 695.49,
+            "ma_20": 689.26,
+            "ma_50": 681.37,
+            "signal": "Bullish",
+            "weekly_pattern": "Neutral / No Clear Pattern",
+            "summary": "Trend is Bullish. Weekly Pattern: Neutral / No Clear Pattern."
+        },
+        "fundamental": {
+            "symbol": "SPY",
+            "pe_ratio": "N/A",
+            "market_cap": 638308188160,
+            "summary": "P/E Ratio: N/A. Market Cap: 638308188160."
+        },
+        "sentiment": {
+            "symbol": "SPY",
+            "sentiment": "Neutral",
+            "summary": "Exa API key missing. Defaulting to neutral sentiment."
+        },
+        "risk": {
+            "symbol": "SPY",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy based on technical trend."
+        }
+    },
+    {
         "timestamp": "2026-01-27T23:39:00.559256",
         "symbol": "SPY",
         "technical": {
