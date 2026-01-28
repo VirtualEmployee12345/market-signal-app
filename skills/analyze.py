@@ -49,15 +49,19 @@ def run_orchestration(symbol="SPY"):
     # Telegram Signal Loop
     recommendation = risk.get('recommendation', 'Hold')
     emoji = "🟢" if recommendation == "Buy" else "🔴" if recommendation == "Sell" else "🟡"
+    weekly_p = tech.get('weekly_pattern', 'N/A')
     
     msg = (
         f"{emoji} *VEE SIGNAL: {symbol}*\n\n"
         f"*Recommendation:* {recommendation}\n"
         f"*Price:* ${tech.get('current_price')}\n"
+        f"*Weekly Pattern:* {weekly_p}\n"
         f"*Risk:* {risk.get('risk_level')}\n\n"
-        f"_Tech:_ {tech.get('summary')}\n"
-        f"_Fund:_ {fund.get('summary')}\n"
-        f"_Sent:_ {sent.get('summary')}"
+        f"*GAME PLAN:*\n"
+        f"1. *Technical:* {tech.get('summary')}\n"
+        f"2. *Fundamental:* {fund.get('summary')}\n"
+        f"3. *Sentiment:* {sent.get('summary')}\n\n"
+        f"_[VEE_SIGNAL_AUTONOMOUS_ORCHESTRATION]_"
     )
     
     # Trigger telegram send via clawdbot message tool (this will be handled by the session when this script is run via cron or manual trigger)
