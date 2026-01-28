@@ -1,0 +1,31 @@
+[
+    {
+        "timestamp": "2026-01-27T23:30:24.159430",
+        "symbol": "SPY",
+        "technical": {
+            "symbol": "SPY",
+            "current_price": 695.49,
+            "ma_20": 689.26,
+            "signal": "Bullish",
+            "summary": "Price is above 20-day MA."
+        },
+        "fundamental": {
+            "symbol": "SPY",
+            "pe_ratio": "N/A",
+            "market_cap": 638308188160,
+            "summary": "P/E Ratio: N/A. Market Cap: 638308188160."
+        },
+        "sentiment": {
+            "symbol": "SPY",
+            "sentiment": "Neutral",
+            "score": 0.5,
+            "summary": "Market sentiment is currently balanced (Placeholder for Exa integration)."
+        },
+        "risk": {
+            "symbol": "SPY",
+            "recommendation": "Buy",
+            "risk_level": "Medium",
+            "summary": "Recommendation: Buy based on technical trend."
+        }
+    }
+]

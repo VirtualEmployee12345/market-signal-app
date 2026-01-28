@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vee Signal | Market Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #d1d1d1;
+            font-family: 'JetBrains+Mono', monospace;
+            background-image: radial-gradient(circle at 2px 2px, #1a1a1e 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .panel {
+            background: rgba(18, 18, 22, 0.8);
+            border: 1px solid #2d2d33;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .glow-green { text-shadow: 0 0 10px #22c55e; color: #22c55e; }
+        .glow-red { text-shadow: 0 0 10px #ef4444; color: #ef4444; }
+        .glow-blue { text-shadow: 0 0 10px #3b82f6; color: #3b82f6; }
+        .data-label { color: #6e6e77; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            animation: scanline 10s linear infinite;
+        }
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+    </style>
+</head>
+<body class="p-6 relative overflow-hidden">
+    <div class="scanline"></div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-end mb-8 border-b border-zinc-800 pb-4">
+        <div>
+            <h1 class="text-2xl font-bold tracking-tighter text-zinc-100">VEE_SIGNAL//<span class="text-zinc-500">MARKET_INTEL</span></h1>
+            <p class="text-xs text-zinc-500">STATUS: OPERATIONAL | ARCH: MULTI-AGENT_v1.0</p>
+        </div>
+        <div class="text-right">
+            <p class="text-xs data-label">System Time</p>
+            <p class="text-sm font-bold" id="current-time">LOADING...</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Main Signal Panel -->
+        <div class="md:col-span-2 space-y-6">
+            {% for result in results %}
+            <div class="panel p-6 rounded-none relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-2 text-[10px] text-zinc-700">SIG_ID: {{ result.timestamp }}</div>
+                
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-4xl font-bold tracking-tighter">{{ result.symbol }}</h2>
+                        <p class="text-zinc-500 uppercase text-xs">Primary Asset Analysis</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="data-label">Current Price</p>
+                        <p class="text-3xl font-bold tracking-tight">${{ result.technical.current_price }}</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-zinc-900/50 p-4 border-l-2 {% if result.risk.recommendation == 'Buy' %}border-green-500{% elif result.risk.recommendation == 'Sell' %}border-red-500{% else %}border-blue-500{% endif %}">
+                        <p class="data-label text-zinc-400">Recommendation</p>
+                        <p class="text-2xl font-bold {% if result.risk.recommendation == 'Buy' %}glow-green{% elif result.risk.recommendation == 'Sell' %}glow-red{% else %}glow-blue{% endif %} uppercase tracking-widest">
+                            {{ result.risk.recommendation }}
+                        </p>
+                    </div>
+                    <div class="bg-zinc-900/50 p-4 border-l-2 border-zinc-700">
+                        <p class="data-label text-zinc-400">Risk Level</p>
+                        <p class="text-2xl font-bold text-zinc-200 uppercase tracking-widest">{{ result.risk.risk_level }}</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="border-t border-zinc-800 pt-4">
+                        <p class="data-label mb-2">Agent Feed</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                            <div class="bg-black/40 p-3 border border-zinc-800">
+                                <span class="text-zinc-500 font-bold">[TECH]</span> {{ result.technical.summary }}
+                            </div>
+                            <div class="bg-black/40 p-3 border border-zinc-800">
+                                <span class="text-zinc-500 font-bold">[FUND]</span> {{ result.fundamental.summary }}
+                            </div>
+                            <div class="bg-black/40 p-3 border border-zinc-800">
+                                <span class="text-zinc-500 font-bold">[SENT]</span> {{ result.sentiment.summary }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Sidebar / Secondary Data -->
+        <div class="space-y-6">
+            <div class="panel p-6 rounded-none">
+                <h3 class="text-sm font-bold border-b border-zinc-800 pb-2 mb-4 uppercase tracking-widest">Control_Center</h3>
+                <form action="/run-analysis" method="POST">
+                    <button type="submit" class="w-full bg-zinc-100 text-black font-bold py-3 hover:bg-white transition-colors uppercase text-xs tracking-widest">
+                        Manual_Re-Scan
+                    </button>
+                </form>
+                <div class="mt-4 text-[10px] text-zinc-500 leading-relaxed">
+                    CRON_STATUS: ACTIVE<br>
+                    NEXT_SYNC: 09:00 EST<br>
+                    LOGS: STABLE
+                </div>
+            </div>
+
+            <div class="panel p-6 rounded-none">
+                <h3 class="text-sm font-bold border-b border-zinc-800 pb-2 mb-4 uppercase tracking-widest">Market_Conditions</h3>
+                <div class="space-y-3 text-xs">
+                    <div class="flex justify-between">
+                        <span class="text-zinc-500">VOLATILITY</span>
+                        <span class="text-zinc-300">LOW</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-zinc-500">LIQUIDITY</span>
+                        <span class="text-zinc-300">NOMINAL</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-zinc-500">TREND</span>
+                        <span class="text-green-500">BULLISH_INTACT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toISOString().replace('T', ' ').substr(0, 19);
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
