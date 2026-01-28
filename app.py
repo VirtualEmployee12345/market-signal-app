@@ -1,4 +1,6 @@
-from flask import Flask, render_template, jsonify, request
+import sys
+# Ensure the root directory is in the path so imports work
+sys.path.append(os.path.dirname(__file__))
 import os
 import subprocess
 import json
@@ -23,10 +25,10 @@ def index():
 def run_analysis():
     # This triggers the /analyze skill logic
     try:
-        # Use absolute path relative to the app.py location
-        script_path = os.path.join(os.path.dirname(__file__), 'skills/analyze.py')
-        subprocess.Popen(['python3', script_path])
-        return jsonify({"status": "Analysis triggered", "time": datetime.now().isoformat()}), 202
+        from skills.analyze import run_orchestration
+        # Run it synchronously for now to ensure it completes and writes the file
+        run_orchestration()
+        return jsonify({"status": "Analysis completed", "time": datetime.now().isoformat()}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
